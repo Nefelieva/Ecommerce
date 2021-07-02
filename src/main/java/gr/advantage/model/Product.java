@@ -1,6 +1,7 @@
 package gr.advantage.model;
 
 
+import java.util.PrimitiveIterator;
 
 public class Product {
     //fields
@@ -103,6 +104,9 @@ public class Product {
             price +=priceInc3;
     }
 
+    /**
+     * R4.32
+     */
     public void updateDescription(){
         if(size<=5)
             description += "Size=SMALL";
@@ -111,4 +115,26 @@ public class Product {
         else
             description += "Size=LARGE";
     }
+    /**
+     * R4.33
+     */
+
+    public void updatePriceByColor(){
+        switch(color){
+            case BLACK:
+                break;
+            case RED:
+                price +=10;
+                break;
+            case WHITE:
+                price +=5;
+                break;
+            case PURPLE:
+                price -= 1;
+                break;
+        }
+
+
+    }
+
 }
