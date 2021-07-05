@@ -72,6 +72,7 @@ public class Customer {
         this.cu_telephone = cu_telephone;
     }
 
+    //Not necessary function but convenient
     @Override
     public String toString() {
         return "Customer{" +

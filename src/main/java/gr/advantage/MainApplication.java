@@ -32,8 +32,8 @@ public class MainApplication {
     private static final String CU_ADDRESS = "Sinifou 2";
 
     private static final int IDO = 0;
-    private static  ArrayList<String> PRODUCTS = new ArrayList<>();
-    private static final int CUSTOMERID = 2;
+    private static  ArrayList<Product> PRODUCTS = new ArrayList<>();
+    private static final Customer CUSTOMER = new Customer(IDC, CU_NAME, CU_SURNAME,CU_ADDRESS, CU_EMAIL, CU_TELEPHONE);
     private static final int EMPLOYEEID = 1;
     private static final Date ORDERDATE = new Date();
     private static final int SHIPMENTNUM = 342514;
@@ -70,6 +70,9 @@ public class MainApplication {
 //        shortN = (short) num;
 
         Product product = new Product(NAME, PRICE, DESCRIPTION, COLOR, SIZE, MATERIAL);
+        Product product2 = new Product("hat", 20, "very good", COLOR, SIZE, MATERIAL);
+        Product product3 = new Product("tekisdf", 30, "nice", COLOR, SIZE, MATERIAL);
+
         System.out.println("product = " + product);
 
 
@@ -88,13 +91,19 @@ public class MainApplication {
 
         Customer customer = new Customer(IDC, CU_NAME, CU_SURNAME,CU_ADDRESS, CU_EMAIL, CU_TELEPHONE);
         System.out.println("customer = " + customer);
-        //customer.updateTelephone();
-        //System.out.println("customer = " + customer);
+//        customer.updateTelephone();
+//        System.out.println("customer = " + customer);
+//
+        ImportedProduct importedProduct = new ImportedProduct("cc", 3, DESCRIPTION, COLOR, SIZE, MATERIAL, "China");
+        Order order = new Order();
+        order.setCustomer(customer);
+        order.create(product);
+        order.create(product2);
+        order.create(product3);
+        order.create(importedProduct);
 
-        Order order = new Order(IDO, PRODUCTS, CUSTOMERID, EMPLOYEEID, ORDERDATE, SHIPMENTNUM);
         System.out.println("Order =" + order);
-        order.addProduct();
-        System.out.println("order =" + order);
+        System.out.println("Total order cost " + order.calculateTotal());
     }
 
 }
